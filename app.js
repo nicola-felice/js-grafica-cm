@@ -14,12 +14,23 @@ function printBoard(numberOfCells) {
 board.addEventListener('click', 
     function(event) {
         // check if the click is on a cell or empty space
-        if ( !isNaN(event.target.innerHTML) ) {
-            alert(`la casella selezionata è la numero: ${event.target.innerHTML}`);
-            event.target.style.backgroundColor = "red";
+        if ( isNaN(event.target.innerHTML) ) {
+            return;
         }
+
+        // if the cell is alredy red make it green
+        if (event.target.style.backgroundColor == "red") {
+            alert(`la casella selezionata è la numero: ${event.target.innerHTML}`);
+            event.target.style.backgroundColor = "green";
+            return;
+        }
+
+        alert(`la casella selezionata è la numero: ${event.target.innerHTML}`);
+        event.target.style.backgroundColor = "red";
     }
 );
+
+
 
 let numberOfCells = parseInt(prompt('quante caselle vuoi inserire?'));
 
